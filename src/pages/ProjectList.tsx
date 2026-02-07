@@ -1,21 +1,10 @@
-const projects = [
-  {
-    id: 1,
-    name: "Planner App",
-    description: "Build a project & task planner",
-    tasks: 5,
-    done: 2,
-  },
-  {
-    id: 2,
-    name: "Portfolio Website",
-    description: "Personal CV & projects",
-    tasks: 3,
-    done: 1,
-  },
-];
+import type { Project } from "../types/project";
 
-export default function ProjectList() {
+type Props = {
+  projects: Project[];
+};
+
+export default function ProjectList({ projects }: Props) {
   return (
     <>
       <h1 className="text-3xl font-bold mb-6">My Projects</h1>
