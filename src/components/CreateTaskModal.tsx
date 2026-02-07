@@ -61,9 +61,9 @@ export default function ProjectDetail({
                 }
                 className="border rounded px-2 py-1 text-sm"
               >
-                <option value="todo">Todo</option>
+                <option value="todo">todo</option>
                 <option value="in-progress">In Progress</option>
-                <option value="done">Done</option>
+                <option value="done">done</option>
               </select>
 
               <button

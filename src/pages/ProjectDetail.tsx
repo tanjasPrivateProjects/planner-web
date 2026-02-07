@@ -24,7 +24,7 @@ export default function ProjectDetail({
         ← Back to projects
       </button>
 
-      <h1 className="text-3xl font-bold mb-1">{project.name}</h1>
+      <h1 className="text-3xl font-bold">{project.name}</h1>
       <p className="text-gray-500 mb-6">{project.description}</p>
 
       <button
@@ -43,22 +43,38 @@ export default function ProjectDetail({
             key={task.id}
             className="flex items-center justify-between bg-white border rounded-lg px-4 py-2"
           >
-            <span>{task.title}</span>
+            <div className="flex items-center gap-3">
+              <span
+                className={`text-xs font-semibold px-2 py-1 rounded-full
+                  ${
+                    task.status === "todo"
+                      ? "bg-gray-200 text-gray-700"
+                      : task.status === "in-progress"
+                      ? "bg-yellow-100 text-yellow-800"
+                      : "bg-green-100 text-green-700"
+                  }
+                `}
+              >
+                {task.status === "todo"
+                  ? "Todo"
+                  : task.status === "in-progress"
+                  ? "In Progress"
+                  : "Done"}
+              </span>
+              <span>{task.title}</span>
+            </div>
 
             <div className="flex items-center gap-3">
               <select
                 value={task.status}
                 onChange={(e) =>
-                  onToggleStatus(
-                    task.id,
-                    e.target.value as TaskStatus
-                  )
+                  onToggleStatus(task.id, e.target.value as TaskStatus)
                 }
-                className="text-sm border rounded px-2 py-1"
+                className="text-sm border rounded px-2 py-1 bg-white"
               >
-                <option value="Todo">Todo</option>
-                <option value="InProgress">In Progress</option>
-                <option value="Done">Done</option>
+                <option value="todo">Todo</option>
+                <option value="in-progress">In Progress</option>
+                <option value="done">Done</option>
               </select>
 
               <button
